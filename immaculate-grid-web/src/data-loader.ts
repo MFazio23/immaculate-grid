@@ -33,5 +33,5 @@ const mapGrid = (apiGrid: APIGrid): DailyGrid => {
 export const loadGrids = async (): Promise<DailyGrid[]> => {
     const response = await fetch('https://faziodb.firebaseio.com/immaculate-grid.json');
     const gridJson = await response.json();
-    return gridJson.slice(350).reverse().map((grid: APIGrid) => mapGrid(grid));
+    return gridJson.slice(1).reverse().map((grid: APIGrid) => mapGrid(grid));
 }

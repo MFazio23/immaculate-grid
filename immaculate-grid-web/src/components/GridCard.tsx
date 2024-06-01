@@ -21,9 +21,12 @@ export function GridCard({grid}: GridCardProps) {
         }
     }
 
+    const cardHeader =
+        <Link href={`https://www.immaculategrid.com/grid-${grid.gridId}`} underline="none">{gridName}</Link>
+
     return (
         <Card>
-            <CardHeader title={gridName} subheader={grid.date}/>
+            <CardHeader title={cardHeader} subheader={grid.date}/>
             <CardContent>
                 <Grid container width={'20em'}
                       style={{border: '1px solid black', borderRadius: 10, overflow: 'hidden'}}

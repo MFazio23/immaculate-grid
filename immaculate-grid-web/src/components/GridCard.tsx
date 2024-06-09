@@ -29,7 +29,7 @@ export function GridCard({grid}: GridCardProps) {
             <CardHeader title={cardHeader} subheader={grid.date}/>
             <CardContent>
                 <Grid container width={'20em'}
-                      style={{border: '1px solid black', borderRadius: 10, overflow: 'hidden'}}
+                      style={{border: '1px solid black', overflow: 'hidden'}}
                       spacing={1}>
                     {grid.cells.map((squareRow, rowIndex) => (
                         squareRow.map((square, colIndex) => (

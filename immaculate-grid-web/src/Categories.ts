@@ -15,7 +15,7 @@ interface Category {
     type: CategoryType;
 }
 
-const categoryMappings: Record<string, Category> = {
+export const categoryMappings: Record<string, Category> = {
     born_outside_usa: {
         id: "born_outside_usa",
         text: "Born outside the USA",
@@ -179,7 +179,7 @@ interface Team {
     imageId: string;
 }
 
-const teamMappings: Record<string, Team> = {
+export const teamMappings: Record<string, Team> = {
     ANA: {id: "ANA", name: "Los Angeles Angels", imageId: "ANA"},
     ARI: {id: "ARI", name: "Arizona Diamondbacks", imageId: "ARI"},
     ATL: {id: "ATL", name: "Atlanta Braves", imageId: "ATL"},

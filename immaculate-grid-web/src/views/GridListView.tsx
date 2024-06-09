@@ -1,14 +1,12 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
-import {DailyGrid} from './APIGrid.ts';
-import {loadGrids} from './data-loader.ts';
-import {Box, Link, SelectChangeEvent} from '@mui/material';
-import {Header} from './components/Header.tsx';
-import {Controls} from './components/Controls.tsx';
-import {SearchOption} from './components/SearchBar.tsx';
-import {getSearchOptions} from './Categories.ts';
-import './Extensions.ts'
-import Grids from './components/Grids.tsx';
-import GridList from './components/GridList.tsx';
+import {DailyGrid} from '../APIGrid.ts';
+import {Box, SelectChangeEvent} from '@mui/material';
+import {Controls} from '../components/Controls.tsx';
+import {SearchOption} from '../components/SearchBar.tsx';
+import {getSearchOptions} from '../Categories.ts';
+import '../Extensions.ts'
+import Grids from '../components/Grids.tsx';
+import GridList from '../components/GridList.tsx';
 
 const filterGrids = (grids: DailyGrid[], filters: SearchOption[]) =>
     filters.length > 0 ?
@@ -19,8 +17,7 @@ const filterGrids = (grids: DailyGrid[], filters: SearchOption[]) =>
         ) :
         grids
 
-export function GridApp() {
-    const [gridData, setGridData] = useState<DailyGrid[]>([]);
+export function GridListView({gridData}: { gridData: DailyGrid[] }) {
     const [viewMode, setViewMode] = useState<string>(localStorage.getItem('viewMode') || 'grid');
     const [itemsPerPage, setItemsPerPage] = useState<number>(10);
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -28,14 +25,6 @@ export function GridApp() {
     const [filteredGrids, setFilteredGrids] = useState<DailyGrid[]>([]);
     const [searchOptions] = useState<SearchOption[]>(getSearchOptions());
     const [selectedFilters, setSelectedFilters] = useState<SearchOption[]>([]);
-
-    useEffect(() => {
-        const loadDataAsync = async () => {
-            const apiGrids = await loadGrids();
-            setGridData(apiGrids);
-        }
-        loadDataAsync();
-    }, []);
 
     useEffect(() => {
         const filteredGrids = filterGrids(gridData, selectedFilters);
@@ -71,7 +60,6 @@ export function GridApp() {
 
     return (
         <Box>
-            <Header/>
             <Box p={'2rem'}>
                 <Controls viewMode={viewMode} onViewModeChanged={handleViewModeChange} itemsPerPage={itemsPerPage}
                           onItemsPerPageChanged={handleItemsPerPageChange}
@@ -85,9 +73,6 @@ export function GridApp() {
                           currentPage={currentPage} onCurrentPageChanged={handleCurrentPageChanged}
                           pageCount={pageCount} hasSearchBar={false}/>
             </Box>
-            <Link href="https://www.flaticon.com/free-icons/grid" title="grid icons">
-                Grid icons created by Freepik - Flaticon
-            </Link>
         </Box>
     )
 }

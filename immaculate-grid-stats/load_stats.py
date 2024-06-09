@@ -10,6 +10,11 @@ with open(json_path, 'r') as file:
 
 correct_answers_grids = list(grid['correctAnswers'] for _, grid in data.items())
 
+correct_answers_mapped = []
+
+for answers_grid in correct_answers_grids:
+    correct_answers_mapped.append([answer for grid in answers_grid for answer in grid])
+
 correct_answers_list = [answer for grid in correct_answers_grids for answer in grid]
 correct_answers_raw = [answer for grid in correct_answers_list for answer in grid]
 

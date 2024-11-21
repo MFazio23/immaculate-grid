@@ -1,6 +1,5 @@
 import {DailyGrid, DailyGridSquare} from '../APIGrid.ts';
-import {Card, CardContent, CardHeader, Link, Typography, useTheme} from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import {Card, CardContent, CardHeader, Grid2 as Grid, Link, Typography, useTheme} from '@mui/material';
 
 interface GridCardProps {
     grid: DailyGrid;
@@ -33,7 +32,7 @@ export function GridCard({grid}: GridCardProps) {
                       spacing={1}>
                     {grid.cells.map((squareRow, rowIndex) => (
                         squareRow.map((square, colIndex) => (
-                            <Grid xs={3} height={'4em'} key={`${rowIndex}-${colIndex}`}
+                            <Grid size={3} height={'4em'} key={`${rowIndex}-${colIndex}`}
                                   display="flex" justifyContent="center" alignItems="center"
                                   style={{border: '1px solid #CCC'}}>
                                 {getSquare(square)}

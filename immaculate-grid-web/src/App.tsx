@@ -8,6 +8,7 @@ import {createBrowserRouter, Outlet, RouterProvider} from 'react-router-dom';
 import {GridListView} from './views/GridListView.tsx';
 import GridStatsView from './views/GridStatsView.tsx';
 import ErrorView from './views/ErrorView.tsx';
+import {PlayerSearchView} from './views/PlayerSearchView';
 
 export const ColorModeContext = React.createContext({
     toggleColorMode: () => {
@@ -64,6 +65,10 @@ function App() {
                     {
                         path: "/grid-stats",
                         element: <GridStatsView gridData={gridData}/>
+                    },
+                    {
+                        path: "/player-search",
+                        element: <PlayerSearchView/>
                     }
                 ]
             }

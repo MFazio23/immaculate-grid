@@ -1,8 +1,7 @@
 import {DailyGrid} from '../APIGrid.ts';
-import {Box} from '@mui/material';
+import {Box, Grid2 as Grid} from '@mui/material';
 import {compileGridStatsCards} from '../stats-calculator.ts';
 import GridStatsCard from '../components/GridStatsCard.tsx';
-import Grid from '@mui/material/Unstable_Grid2';
 
 export default function GridStatsView({gridData}: { gridData: DailyGrid[] }) {
     const gridStats = compileGridStatsCards(gridData);

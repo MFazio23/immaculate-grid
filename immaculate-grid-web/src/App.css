@@ -2,3 +2,11 @@
     margin: 0 auto;
     text-align: center;
 }
+
+.player-search-row:hover {
+    background-color: #f0f0f0;
+}
+
+.player-search-row-dark:hover {
+    background-color: #030303;
+}

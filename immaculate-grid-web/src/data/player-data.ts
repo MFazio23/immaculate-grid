@@ -7,9 +7,26 @@ interface APIResult {
     updated: number;
 }
 
+const getProperTeamId = (teamId: string): string => {
+    switch (teamId) {
+        case 'ANA':
+            return 'LAA';
+        case 'FLA':
+            return 'MIA';
+        case 'MON':
+            return 'WSN';
+        case 'WSH':
+            return 'WSN';
+        case 'TBD':
+            return 'TBR';
+        default:
+            return teamId;
+    }
+}
+
 const mapTeamInfo = (teams: BRefPlayer['teams']): PlayerTeam[] =>
     teams.map((team) => ({
-        id: team.id,
+        id: getProperTeamId(team.id),
         war6Plus: team.season_6_war === 1,
         allStar: team.season_allstar === 1,
         goldGlove: team.season_award_gold_glove === 1,
@@ -103,14 +120,14 @@ const convertPlayers = (players: BRefPlayer[]): Player[] =>
             birthCountry: player.birth_country,
             bornOutsideUSA: player.birth_country !== 'USA',
             hallOfFame: player.career_award_hof === 1,
-            teamList: player.teams.map((team) => team.id).join('/'),
+            teamList: teamInfo.map((team) => team.id).join('/'),
             teamInfo: teamInfo,
             positionList: positionList,
             singleTeam: player.career_single_team === 1,
             playedInNLB: player.career_played_nlb === 1,
             careerStats: mapCareerStats(player),
             draftInfo: player.draft?.map((draft) => ({
-                id: draft.id,
+                id: getProperTeamId(draft.id),
                 firstRoundPick: draft.first_round_draft_pick === 1,
             })) ?? [],
         });

@@ -82,7 +82,7 @@ export const PlayerSeasonInfoBox = ({player}: PlayerInfoBoxProps) => {
                     <Typography key={index} variant={'body1'}>
                         {item.label} ({item.teams.map(team => team.id).join('/')})
                     </Typography> : null
-            )) : <Typography variant={'body1'}>No career highlights</Typography>}
+            )) : <Typography variant={'body1'}>No seasonal highlights</Typography>}
         </Box>
     );
 }

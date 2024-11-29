@@ -10,6 +10,7 @@ export const PlayerResultInfoBox = ({player}: PlayerInfoBoxProps) => {
             <Typography variant={'body2'}>{player?.years}</Typography>
             <Typography variant={'body1'}>{player?.teamList}</Typography>
             <Typography variant={'body1'}>{player?.positionList}</Typography>
+            <Typography variant={'body1'}>Born: {player?.birthCountry}</Typography>
             {firstRoundPick ?
                 <Typography variant={'body1'}>{`First round pick (${firstRoundPick.id})`}</Typography> :
                 null

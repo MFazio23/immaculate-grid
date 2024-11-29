@@ -50,7 +50,7 @@ export const PlayerAwardInfoBox = ({player}: PlayerInfoBoxProps) => {
                     <Typography key={index} variant={'body1'}>
                         {item.label} {item.teams ? `(${item.teams.map(team => team.id).join('/')})` : null}
                     </Typography> : null
-            )) : <Typography variant={'body1'}>No career highlights</Typography>}
+            )) : <Typography variant={'body1'}>No awards</Typography>}
         </Box>
     );
 }
